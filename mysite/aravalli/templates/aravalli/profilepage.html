@@ -1,0 +1,187 @@
+{% extends "aravalli/layout.html" %}
+{% load static %}
+{% block body %}
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+  <style>
+  .left{ margin-left: 10%;}
+    div.polaroid {margin-top: 20px;
+  width: 42%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  float:left;
+}
+.box {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.box2{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.login{
+        background-color:  #ff751a;
+
+        border-radius: 5px;
+        border:none;
+        padding: 6px 20px;
+    }
+    .login:hover{
+        background-color: rgba(0, 0, 0, 0.80);
+        color:white;
+    }
+    .register{
+        background-color: rgba(0, 0, 0, 0.80);
+        color:white;
+        border-radius: 5px;
+        border:none;
+        padding: 6px 20px;
+
+    }
+    .register:hover{
+        background-color: orangered;
+        color:rgba(0, 0, 0, 0.80);
+        text-decoration: none;
+    }
+    .p{
+        margin-top: 25px;
+    }
+    div.upload {
+    margin-top: 20px;
+    border-radius: 15px;
+  width: 32%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+  float:left;
+  margin-left: 15%;
+}
+
+div.uploadimage {
+  text-align: center;
+
+}
+
+div.images{
+  margin-top: 20px;
+  border-radius: 15px;
+  width: 31%;
+  height: 700px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+  float:left;
+  margin-left: 20px;
+}
+
+div.imagesss{
+   text-align: center;
+  padding: 10px 5px;
+}
+#imgs{margin-left: 1px;}
+
+.image{width:80%; height: 200px; margin-left: 10%;}
+
+@media screen and (max-width:600px) {
+  div.polaroid { 
+    width:49% ;/* The width is 100%, when the viewport is 800px or smaller */
+  }
+  .left{
+    margin-left: 0%
+  }
+  .image{ width: 98%; margin-left: 1%;}
+  div.upload {
+    width: 66% ;
+    margin-left: 17%;
+  }
+  #imgs{ margin-left: 20%;}
+  div.images{width:45%; height: 520px;}
+  .centered{position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);}
+
+}
+
+
+  </style>
+</head>
+  <img src="/media/images/home/pngtree-happy-shopping.jpg" alt="Snow" class="image" style="margin-top:120px;">
+  <h2 style="font-family:'Aclonica'; color:rgba(0, 0, 0, 0.80); text-align: center; margin-top:-140px; padding-left: 15%; padding-right: 15%;">{{data.shopname}}</h2></img>
+
+</div>
+<div class="left">
+ <div class="polaroid" style="margin-top: 100px; height: 400px;">
+<img src="/media/images/home/shopname.jpg" alt="Snow" style="width: 100%; height:400px;"> 
+   <h6 style="font-family:Times ; color:black ; margin-top: -250px; text-align: center; padding-right: 20%; padding-left: 20%;">{{data.describe}} </h6>
+ </img>
+   </div>
+</div>
+</div>
+ </div>
+<div class="polaroid" style="margin-top: 100px; height: 400px;">
+   <img src="/media/images/home/white.jpg" style="width: 40%; height: 400px;">
+     <h4 style="font-family:'Aclonica'; color:black; text-align: center; margin-top: -360px; padding-left: 15%; padding-right: 15%;">{{data.owner}}</h4>
+
+    <h6 style="font-family:Times ; color:black ; text-align: center; padding-right: 15%; padding-left: 15%;">Location : {{data.shopadd1}} , {{data.shopadd2}}</h6>
+
+   <h6 style="font-family:Times ; color:black; text-align: center; padding-left: 15%; padding-right: 15%;">Timing : {{data.opentime}} to {{data.closetime}}</h6>
+   <h5 style="font-family:Times ; color:black; text-align: center; padding-right: 15%; padding-left: 15%;"> Contact No. :{{data.contactno}} , {{data.altcontact}}</h5>
+   <h5 style="font-family:Times ; color:black; text-align: center; padding-left: 15%; padding-right: 15%;">Website: <a href="https://{{data.website}}/" style="text-decoration: none;">{{data.website}}</a></h5>
+</img>
+   </div>
+  </div>
+</div>
+</div>
+</div>
+{% block content %}
+<div class="left">
+  <div class="upload" id="imgs" >
+ <div><a href="https://www.google.com/maps/dir//{{data.latitude}},{{data.longitude}}/"><img src="/media/images/home/location.jpg" style="width: 100%; border-radius: 15px;"></a></div>
+ <div class="uploadimage">
+   </div>
+  </div>
+ <h1 style="text-align:center;">Produce Product Details</h1>
+
+ <div class="upload">
+  <div class="uploadimage">
+
+  <form action="{% url 'uploadimage' data.pk %}" method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %} 
+        {{ form.as_p }} 
+
+      <p>No of Pieces: <input type="number" name="pieces" placeholder="No of Pieces" style="border-color: rgba(0, 0, 0, 0.30);"></p>
+
+
+      <p>Offer: <input type="text" name="offer"  placeholder="Offer" style="border-color: rgba(0, 0, 0, 0.30);"></p>
+        <p class="p"><button type="submit" class="login">Upload</button> </p>
+    </form> 
+  </div>
+</div>
+</div>
+{% for sh in image.all %}
+<div class="images">
+  <img src="{{sh.image.url}}" alt="5 Terre" style="width:100%">
+  <div class="imagesss">
+  <p>{{sh.title}}</p>
+  <a href="{% url 'delete' sh.pk %}" style="text-decoration: none; background-color: #ff751a; color: white; padding: 5px; border-radius: 5px;">Delete Profile</a>
+  </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}
+{% endblock %}

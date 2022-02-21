@@ -1,0 +1,113 @@
+{% extends "aravalli/layout.html" %}
+
+{% block body %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <style>
+  .box2{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 8px;
+
+  left: 8px;
+  
+}
+    div.polaroid {
+  width: 22%;
+  height: 580px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+  float:left;
+  margin-left: 30px;
+}
+
+div.container {
+  text-align: center;
+  padding: 5px 5px;
+  line-height: -5;
+}
+.pagination {
+  float:left;
+  padding: 8px 16px;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  color: black;
+  background-color:  #ff751a;
+
+}
+
+.pagination a:hover{
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+.size{ font-size: 15px;}
+.ppp{margin-top: 120px;}
+@media screen and (max-width:600px) {
+  div.polaroid { 
+    width:44%; /* The width is 100%, when the viewport is 800px or smaller */
+    margin-left: 20px;
+  }
+  .size{font-size: 15px;}
+  .ppp{margin-top: 140px;}
+}
+  </style>
+</head>
+<div>
+  {% for sh in image %}
+   <p class="ppp"></p>
+   <div class="polaroid">
+  <span><p style="font-family:'Aclonica'; background-color: red; color: white; padding: 4px;" class="size">{{sh.offer}}</p></span></img></a>
+  <a href="{%url 'details' sh.pk%}" style="text-decoration: none; color:black"><img src="{{sh.image.url}}" alt="5 Terre" style="width:100%; margin-top: -16px;">
+    <div class="container">
+  <p style="color: red; font-family: Times; font-size: 20px;"> &#8377 {{sh.price}}/-</p>
+  <h5 style="margin-top:10px"><a href="{%url 'details' sh.pk%}" style="text-decoration: none; color:black"> {{sh.title}}</a></h5>
+
+  </div>
+</div>
+   </div>
+{% endfor %}
+</div>
+{{iim}}
+<div>
+{% if image.has_other_pages %}
+
+  <div class="pagination">
+    {% if image.has_previous %}
+      <a href="?page={{ users.previous_page_number }}" class="hover">Previous</a>
+    {% else %}
+      <a class="disabled"><span>Previous</span></a>
+    {% endif %}
+    {% for i in image.paginator.page_range %}
+      {% if image.number == i %}
+        <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+      {% else %}
+        <a href="?page={{ i }}" >{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if image.has_next %}
+      <a href="?page={{ users.next_page_number }}" class="hover">Next</a>
+    {% else %}
+      <a class="disabled"><span>Next</span></a>
+    {% endif %}
+  </div>
+{% endif %}
+</div>
+</div>
+</div>
+
+{% endblock %}
+

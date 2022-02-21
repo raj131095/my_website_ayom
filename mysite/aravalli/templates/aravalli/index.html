@@ -1,0 +1,229 @@
+{% extends "aravalli/layout.html" %}
+
+{% block body %}
+    <head>
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=0.7">
+<meta content="text/html; charset=iso-8859-2" http-equiv="Content-Type">
+<style>
+.mySlides {display:none;}
+.iconDetails {
+ margin-left:0%;
+float:left; 
+height:auto;
+width:40px; 
+} 
+
+#foot{ height: 300px;}
+.container2 {
+    width:100%;
+    height:auto;
+    padding:1%;
+}
+
+div.polaroid2 {
+      border-radius: 15px;
+      margin-top: 20px;
+  width: 84%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  float:left;
+  margin-left: 7%;
+}
+ div.polaroid {
+  width: 31%;
+  height: 300px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 40px;
+  float:left;
+  margin-left: 20px;
+}
+
+div.container {
+  text-align: center;
+  line-height: -5;
+}
+ #image4{width:40%;}
+  #image{
+    max-width: 900px;
+  }
+  #image3{width: 50%;}
+  #image2{width:40%}
+  #welcome{margin-top: 100px;}
+  #slide{max-width:90%; margin-left: 5%;}
+  #imgslid{height: 500px;}
+  .margin{margin-left: 20%;}
+    @media screen and (max-width:600px) {
+      .margin{margin-left: 35%;}
+  #image{ 
+    width:98%; /* The width is 100%, when the viewport is 800px or smaller */
+    margin-left: 1%;
+  }
+  #imgslid{height: 370px;}
+  #image2{width: 98%;
+  margin-left:1%;}
+  #image3{width: 98%;
+  margin-left:1%;}
+  div.polaroid{
+      width: 96%;
+      margin-left: 2%;
+  }
+  #welcome{margin-top: 130px;}
+  #slide{max-width: 98%; margin-left: 1%;}
+  #image4{
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+    
+  }
+  #foot{height: 400px;}
+}
+  </style>
+</head>
+
+<body>
+
+<h2 class="w3-center" style="text-align: center;" id="welcome">Welcome {{users.email}}!</h2>
+
+
+<div class="w3-content w3-section" id="slide">
+  <img class="mySlides" src="/media/images/home/store_auto_x2.jpg" style="width:100%;" id="imgslid">
+
+  <img class="mySlides" src="/media/images/home/buying+product_auto_x2.jpg" style="width:100%;" id="imgslid">
+  <img class="mySlides" src="/media/images/home/freestocks-_3Q3tsJ01nc-unsplash.jpg" style="width:100%;" id="imgslid">
+  <img class="mySlides" src="/media/images/home/sardarji_auto_x2.jpg" style="width:100%;" id="imgslid">
+</div>
+<br>
+
+<div class="polaroid" style="background-color: yellow;">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+  </div>
+  </div>
+<div class="polaroid" style="background-color: red;">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+  </div>
+  </div>
+<div class="polaroid" style="background-color: #ff751a;">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+
+  </div>
+  </div>
+<div class="polaroid" style="background-color:rgb(29, 29, 255);">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+  </div>
+  </div>
+<div class="polaroid" style="background-color:deeppink;">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+  </div>
+  </div>
+<div class="polaroid" style="background-color:yellow;">
+  <img src="media/images/home/shopname.jpg" alt="5 Terre" style="width:60%">
+  <div class="container">
+  </div>
+  </div>
+    <h1 style="text-align: center;">Explore Us</h1>
+
+
+
+<div class="polaroid2">
+<div class='container2'>
+        <div>
+            <img src="/media/images/home/digital shop.JPG" id="image4" class='iconDetails'>
+        </div>  
+    <p class="card-text">
+       <h3 class="card-text" style="margin-left: 25px;">Your digital shop</h3>
+            <p style="font-size: 19px;">Your retail shop is present offline, let transform it and create your shop online.provide your 
+              shopname, shop location and full details of your shop. Let cross the boundry of your area and reach 
+              the every corner of the world digitally.
+            </p>
+            <a href="{% url 'create_shop' %}" style="text-decoration: none; background-color: #ff751a;color: white; padding: 5px; border-radius: 5px; font-size: 20px;" class="margin">Create shop </a>
+    </div>
+  
+</div>
+</div>
+</div>
+
+<div class="polaroid2">
+<div class='container2'>
+        <div>
+            <img src="/media/images/home/location - Copy.JPG" id="image4" class='iconDetails'>
+        </div>  
+    <p class="card-text">
+       <h3 class="card-text" style="margin-left: 25px;">Show shop Location and Products</h3>
+            <p style="font-size: 19px;">Let's make finding your shop easier for everyone, you just need to provide your Google location.
+              Now you can upload or post your product images, details, price and offers and can attract more number of Customers.
+            </p>
+            <a href="{% url 'aboutus' %}" style="text-decoration: none; background-color: #ff751a;color: white; padding: 5px; border-radius: 5px; font-size: 20px;" class="margin">Know more </a>
+
+    </div>
+  
+</div>
+</div>
+</div>
+<div class="polaroid2">
+<div class='container2'>
+        <div>
+            <img src="/media/images/home/explore.jpg" id="image4" class='iconDetails'>
+        </div>  
+    <p class="card-text">
+       <h3 class="card-text" style="margin-left: 25px;">Explore retail shops</h3>
+            <p style="font-size: 19px;">Want to buy a product near your area search for it in better way, know your retailer shop products,
+              know the location of shop, know the offer, price of products, and explore the retailer shop with your convient way.
+         .
+            </p>
+            <a href="{% url 'aboutus' %}" style="text-decoration: none; background-color: #ff751a;color: white; padding: 5px; border-radius: 5px; font-size: 20px;" class="margin">Know more </a>
+    </div>
+  
+</div>
+</div>
+</div>
+
+<h1 style="text-align: center;">Contact Us</h1>
+<div class="polaroid2" style="background-color:darkturquoise;">
+<div class='container2'>
+        <div>
+            <img src="/media/images/home/contact-us.png" id="image3" class='iconDetails'>
+        
+            </div>
+
+              <h2 style=" text-decoration:underline; text-decoration-color: orange; color:rgb(1, 61, 95); text-align: center;" class="card-text" >Contact Us</h2>
+              <h4 style="font-family: Times;" class="card-text" >Call us: +91 9522848897</h4>
+              <h4 style="font-family: Times;" class="card-text" >Email us: ayomshops@gmail.com</h4>
+              <h4 style="text-decoration:underline; text-decoration-color: orange;color:rgb(1, 61, 95)" class="card-text" >Location</h4>
+              <h4 style="font-family: Times;" class="card-text" >Reach us: Shop No-205, First floar, Shyam square, Pandri, Raipur (C.G.)</h4>
+               <a href="https://www.google.com/maps/dir//Shyam+square,+Pandri+Road,+LIC+of+India+bldg,+IGVP,+Devendra+Nagar,+Raipur,+Chhattisgarh/@21.2544604,81.5790588,12z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a28dd4d326a060d:0xf3a4910ea162e4ae!2m2!1d81.6491001!2d21.2543149" style="text-decoration: none; background-color: orange; color: rgba(0, 0, 0, 0.8);padding: 5px; border-radius: 5px; font-size: 20px;"> Reach Us </a></button>
+
+            </p>
+    </div>
+  
+</div>
+</div>
+</div>
+<div class="polaroid2" style="background-color: rgba(0, 0, 0, 0.8); width: 100%; margin-left: 0%;border-radius: 0px;" id="foot"><img src="/media/images/home/ayom2-removebg-preview.png" style="width: 100px; background-color: white; margin-left: 45%;"></div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
+
+</body>
+
+</html>
+
+{% endblock %}

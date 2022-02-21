@@ -1,0 +1,175 @@
+{% extends "aravalli/layout.html" %}
+
+{% block body %}
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+  <style>
+    .image{width:80%; height: 200px; margin-left: 10%;}
+    .login{
+        background-color:  #ff751a;
+
+        border-radius: 5px;
+        border:none;
+        padding: 6px 20px;
+    }
+    .login:hover{
+        background-color: rgba(0, 0, 0, 0.80);
+        color:white;
+    }
+    .register{
+        background-color:  #ff751a;
+        color:black;
+        border-radius: 5px;
+        border:none;
+        padding: 6px 20px;
+    }
+    .details{
+      font-family:Times ; color:black ; padding-right: 10%; padding-left: 10%;
+    }
+    div.polaroid {
+      border-radius: 15px;
+      margin-top: 20px;
+  width: 35%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  float:left;
+  margin-left: 10%;
+}
+.p{ margin-top: 25px;}
+.box {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+div.container {
+  text-align: center;
+}
+#id{ background-color:  #ff751a;}
+#data{width: 40%; height: 400px; margin-left: 5%;}
+#imgs{height: 400px; width: 46%; margin-left: 6%;}
+
+@media screen and (max-width:600px) {
+  div.polaroid { 
+    width:80% /* The width is 100%, when the viewport is 800px or smaller */
+
+  }
+  #data{ width: 80%; margin-left: 10%;}
+  .image{ width: 100%; margin-left: 0%;}
+  #imgs{width: 84%; margin-left: 8%;}
+}
+  </style>
+</head>
+<br>
+  <img src="/media/images/home/pngtree-happy-shopping.jpg" alt="Snow" class="image" style="margin-top:120px;">
+  <h2 style="font-family:'Aclonica'; color:rgba(0, 0, 0, 0.80); text-align: center; margin-top:-140px; padding-left: 15%; padding-right: 15%;">{{images.shopname}}</h2></img>
+
+</div>
+   <div class="polaroid" style="margin-top: 100px">
+  <img src="{{images.image.url}}" alt="5 Terre" style="width:100%">
+  <div class="container">
+  <p><h3 style="font-family: Times; color:red; "> &#8377 {{images.price}} /- </h3></p>
+  </div>
+   </div>
+<div>
+  <div class="polaroid" id="data" style="margin-top: 100px;">
+   <img src="/media/images/home/white.jpg" style="width: 100%; height: 400px;"> 
+   <h4 class="details" style=" margin-top: -360px">{{images.title}}</h4>
+
+    <h6 class="details"> {{images.products}} </h6>
+   <p class="p"><h6 style="font-family:Times ;padding-right: 10%; padding-left: 10%; text-align: center; color: red; font-size: 20px;" class="register" >Pieces: {{images.pieces}} </h6></p>
+
+   <h5 class="details"> Offer: {{images.offer}}</h5>
+   {% if user.username %}
+    <p style="text-align: center;">
+      {% if added %}
+      <a href="{% url 'removewatchlist' images.pk %}"><button class="btn btn-danger" >Remove from watchlist</button></a>
+
+      {% else %}
+      <a href="{% url 'addwatchlist' images.pk %}" ><button class="btn btn-success" >Add to watchlist</button></a>
+      {% endif %}
+    </p>
+  </img>
+    <br>
+    {% endif %}
+
+  {% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{error}}
+      </div>
+    {% endif %}
+    {% if errorgreen %}
+    <div class="alert alert-success" role="alert">
+        {{errorgreen}}
+      </div>
+    {% endif %}
+
+   </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+   <div class="polaroid">
+     <h3 style="text-align: center;">Reach to Shop</h3>
+
+    <div><a href="https://www.google.com/maps/dir//{{images.latitude}},{{images.longitude}}/"><img src="/media/images/home/location.jpg" style="width: 100%; border-radius: 15px;"></a></div>
+   </div>
+<div class="container" >
+<div class="polaroid" id="imgs">
+   <img src="/media/images/home/white.jpg" style="width: 45%; height: 400px;">
+     <h3 style="font-family:Times; color:black; text-align: center; margin-top: -300px; padding-left: 15%; padding-right: 15%;">{{images.owner}}</h3>
+    <h6 style="font-family:Times ; color:black ; text-align: center; padding-right: 15%; padding-left: 15%;">Location : {{images.shopadd1}} , {{images.shopadd2}}</h6>
+
+   <h6 style="font-family:Times ; color:black; text-align: center; padding-left: 15%; padding-right: 15%;">Timing : {{images.opentime}} to {{images.closetime}}</h6>
+   <h6 style="font-family:Times ; color:black; text-align: center; padding-right: 15%; padding-left: 15%;"> Contact No. :{{images.contactno}} , {{images.altcontact}}</h6>
+   <h6 style="font-family:Times ; color:black; text-align: center; padding-left: 15%; padding-right: 15%;">Website: <a href="https://{{images.website}}/" style="text-decoration: none;">{{images.website}}</a></h6>
+</img>
+   </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+  {% if user.username %}
+    
+    <div class="container">
+      <form action="{% url 'cmntsubmit' i.pk %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1"><b></b></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment" placeholder="Write your comment here..." required></textarea>
+        </div>
+        <button type="submit" class="login">Submit</button>
+      </form>
+    </div>
+    <br>
+    {% endif %}
+    {{userss.username}}
+    {% if comments %}
+    <h3>Comments:</h3>
+    <div class="container">
+          {% for c in comments %}
+          <div class="card mb-3" style="max-width: 80%;">
+            <div class="row no-gutters">
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h6 class="card-title">{{c.user}}</h6>
+                  <p class="card-text">{{c.comment}}   <small class="text-muted">{{c.time}} UTC</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+           {% endfor %}
+           
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

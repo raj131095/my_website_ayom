@@ -1,0 +1,26 @@
+{% extends "aravalli/layout.html" %}
+
+{% block body %}
+<head>
+    <style>
+        .login{
+        background-color: #ff751a;
+        border-radius: 5px;
+        border:none;
+        padding: 6px 20px;
+        color:black;
+        text-align: center;
+    }
+    .login:hover{
+        background-color: rgba(0, 0, 0, 0.80);
+        color:white;
+    }
+    </style>
+</head>
+<h1 style="background-color:#ff751a; text-align: center; margin-top: 120px;"> Thankyou! your product has been removed</h1>
+
+
+
+<a href="{% url 'activelist' %}" style="text-decoration: none; margin-left: 40%; margin-top:40px; " class="login">Activelist</a>
+<p class="btn btn-danger" style="margin-top: 20px;"> if your data is again showing in your profile page then it is due to technical error please go to profile page and refresh the page</p>
+{% endblock %}

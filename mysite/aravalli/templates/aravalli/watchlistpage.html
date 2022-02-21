@@ -1,0 +1,69 @@
+{% extends "aravalli/layout.html" %}
+
+{% block body %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+<style>
+.iconDetails {
+ margin-left:2%;
+float:left; 
+height:auto;
+width:40px; 
+} 
+
+.container2 {
+    width:100%;
+    height:auto;
+    padding:1%;
+}
+ div.polaroid {
+      border-radius: 15px;
+      margin-top: 20px;
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  float:left;
+  margin-left: 5%;
+}
+div.container {
+  text-align: center;
+}
+
+#image{width:15%;}
+@media screen and (max-width:600px) {
+  #image{ 
+    width:40%; /* The width is 100%, when the viewport is 800px or smaller */
+    
+  }
+  div.polaroid{
+      width: 96%;
+      margin-left: 2%;
+  }
+}
+</style>
+</head>
+<br>
+<br>
+<br>
+<h1 style="margin-top: 70px;">Watchlist</h1>
+{% for city in items %}
+<div class="polaroid">
+<div class='container2'>
+        <div>
+            <a href="{% url 'details' city.pk %}"><img src={{city.image.url}} id="image" class='iconDetails'></a>
+        </div>  
+    <div style='margin-left:60px; font-family:Times ;'>
+    <a href="{% url 'details' city.pk %}" style="text-decoration: none; color:black"><h4>{{city.title}}</h4></a>
+    <h4 style="font-family: Times; color:red; "> &#8377 {{city.price}} /- </h4>
+    <div style='line-height: 5px;'><p style="color: orange;">{{city.offer}}</p><br><p style="line-height: 20px;">{{city.shopname}}</p>
+    <a href="{% url 'removewatchlist' city.pk %}" ><button class="btn btn-danger">Remove from watchlist</button></a>
+    </div>
+  
+</div>
+</div>
+</div>
+{% empty %}
+      <h3>No listings found in your watchlist...</h3>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "aravalli/layout.html" %}
+{% block body %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.7">
+<style>
+.iconDetails {
+ margin-left:2%;
+float:left; 
+height:auto;
+width:40px; 
+} 
+
+.container2 {
+    width:100%;
+    height:auto;
+    padding:1%;
+}
+ div.polaroid {
+      border-radius: 15px;
+      margin-top: 20px;
+  width: 90%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  float:left;
+  margin-left: 5%;
+}
+div.container {
+  text-align: center;
+}
+
+#image{width:15%;}
+@media screen and (max-width:600px) {
+  #image{ 
+    width:40%; /* The width is 100%, when the viewport is 800px or smaller */
+    
+  }
+  div.polaroid{
+      width: 96%;
+      margin-left: 2%;
+  }
+}
+</style>
+</head>
+<br>
+<br>
+<br>
+<h1 style="margin-top: 70px;">Search Results</h1>
+{% for city in object_list %}
+<div class="polaroid">
+<div class='container2'>
+        <div>
+            <a href="{% url 'details' city.pk %}"><img src={{city.image.url}} id="image" class='iconDetails'></a>
+
+
+        </div>  
+    <div style='margin-left:60px; font-family:Times ;'>
+    <a href="{% url 'details' city.pk %}" style="text-decoration: none; color:black"><h4>{{city.title}}</h4></a>
+    <h4 style="font-family: Times; color:red; "> &#8377 {{city.price}} /- </h4>
+    <div style='line-height: 5px;'><h5 style="color: orange;">{{city.offer}}</h5><br><h5 style="line-height: 20px;">{{city.shopname}}</h5>
+
+    </div>
+</div>
+</div>
+</div>
+{% if object_list.has_other_pages %}
+
+  <div class="pagination">
+    {% if object_list.has_previous %}
+      <a href="?page={{ users.previous_page_number }}" class="hover">Previous</a>
+    {% else %}
+      <a class="disabled"><span>Previous</span></a>
+    {% endif %}
+    {% for i in object_list.paginator.page_range %}
+      {% if object_list.number == i %}
+        <a class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></a>
+      {% else %}
+        <a href="?page={{ i }}" >{{ i }}</a>
+      {% endif %}
+    {% endfor %}
+    {% if object_list.has_next %}
+      <a href="?page={{ users.next_page_number }}" class="hover">Next</a>
+    {% else %}
+      <a class="disabled"><span>Next</span></a>
+    {% endif %}
+  </div>
+{% endif %}
+   
+{% endfor %}
+{% endblock %}
