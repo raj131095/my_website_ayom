@@ -85,7 +85,6 @@ sqlparse==0.4.2
 tenacity==8.0.1
 traitlets==4.3.2
 Twisted==19.10.0
-twisted-iocpsupport==1.0.2
 txaio==18.8.1
 typing-extensions==4.0.1
 urllib3==1.26.5
